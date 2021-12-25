@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Decoder;
+using Task = Decoder.Task;
 
 namespace ConcDecoder
 {
@@ -13,6 +15,7 @@ namespace ConcDecoder
 
         public ConcurrentTaskBuffer() : base()
         {
+
             //todo: implement this method such that satisfies a thread safe shared buffer.
         }
 
@@ -58,12 +61,31 @@ namespace ConcDecoder
         /// <returns>Information logged during the execution.</returns>
         public string ConcurrentTaskExecution(int numOfProviders, int numOfWorkers)
         {
+            bool isDone = false;
+            string log = "";
             ConcurrentTaskBuffer tasks = new ConcurrentTaskBuffer();
+            
+            Provider provider = new Provider(tasks, this.challenges);
+            Worker worker = new Worker(tasks);
 
-            //todo: implement this method such that satisfies a thread safe shared buffer.
+            provider.SendTasks();
+            worker.ExecuteTasks();
+
+            System.Threading.Tasks.Task[] tasks1 = new System.Threading.Tasks.Task[numOfWorkers];
+            for (int i = 0; i < numOfWorkers - 1; i++){
+                
+                tasks1[i] = new TaskFactory().StartNew(() =>  new Worker(tasks).ExecuteTasks());
+            }
+
+            new TaskFactory().ContinueWhenAll(tasks1, completedTasks =>
+            {
+                Console.WriteLine("{0} contains: ", "");
+            });
+
+            // todo: implement this method such that satisfies a thread safe shared buffer.
 
 
-            return tasks.GetLogs();
+            return log;
         }
     }
 }

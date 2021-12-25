@@ -1,0 +1,16 @@
+C:\Users\dvide\OneDrive\Documenten\GitHub\ConcurrencyAssignment2021\Decoder\bin\Debug\net5.0\Decoder.exe
+C:\Users\dvide\OneDrive\Documenten\GitHub\ConcurrencyAssignment2021\Decoder\bin\Debug\net5.0\Decoder.deps.json
+C:\Users\dvide\OneDrive\Documenten\GitHub\ConcurrencyAssignment2021\Decoder\bin\Debug\net5.0\Decoder.runtimeconfig.json
+C:\Users\dvide\OneDrive\Documenten\GitHub\ConcurrencyAssignment2021\Decoder\bin\Debug\net5.0\Decoder.runtimeconfig.dev.json
+C:\Users\dvide\OneDrive\Documenten\GitHub\ConcurrencyAssignment2021\Decoder\bin\Debug\net5.0\Decoder.dll
+C:\Users\dvide\OneDrive\Documenten\GitHub\ConcurrencyAssignment2021\Decoder\bin\Debug\net5.0\ref\Decoder.dll
+C:\Users\dvide\OneDrive\Documenten\GitHub\ConcurrencyAssignment2021\Decoder\bin\Debug\net5.0\Decoder.pdb
+C:\Users\dvide\OneDrive\Documenten\GitHub\ConcurrencyAssignment2021\Decoder\obj\Debug\net5.0\Decoder.csproj.AssemblyReference.cache
+C:\Users\dvide\OneDrive\Documenten\GitHub\ConcurrencyAssignment2021\Decoder\obj\Debug\net5.0\Decoder.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dvide\OneDrive\Documenten\GitHub\ConcurrencyAssignment2021\Decoder\obj\Debug\net5.0\Decoder.AssemblyInfoInputs.cache
+C:\Users\dvide\OneDrive\Documenten\GitHub\ConcurrencyAssignment2021\Decoder\obj\Debug\net5.0\Decoder.AssemblyInfo.cs
+C:\Users\dvide\OneDrive\Documenten\GitHub\ConcurrencyAssignment2021\Decoder\obj\Debug\net5.0\Decoder.csproj.CoreCompileInputs.cache
+C:\Users\dvide\OneDrive\Documenten\GitHub\ConcurrencyAssignment2021\Decoder\obj\Debug\net5.0\Decoder.dll
+C:\Users\dvide\OneDrive\Documenten\GitHub\ConcurrencyAssignment2021\Decoder\obj\Debug\net5.0\ref\Decoder.dll
+C:\Users\dvide\OneDrive\Documenten\GitHub\ConcurrencyAssignment2021\Decoder\obj\Debug\net5.0\Decoder.pdb
+C:\Users\dvide\OneDrive\Documenten\GitHub\ConcurrencyAssignment2021\Decoder\obj\Debug\net5.0\Decoder.genruntimeconfig.cache
