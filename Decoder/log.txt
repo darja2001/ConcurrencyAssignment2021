@@ -1,10 +1,33 @@
 The growth of the buffer:
+*
+**
+***
+****
+*****
+******
+*******
+********
+*********
+**********
+***********
+************
+*************
+**************
+***************
+****************
+*****************
+******************
+*******************
+********************
+*********************
+**********************
+***********************
+************************
+*************************
 
-Number of Tasks: 0
-Max Buffer Size: 0
-Time Sequential = 16 min, 7sec, 338 msec. 
-Time Concurrent = 0 min, 0sec, 1 msec. 
-Number of Loaded Challenges: 500
+Number of Tasks: 51
+Max Buffer Size: 51
+Time Sequential = 0 min, 49sec, 874 msec. 
 Number of Worker Threads: 40
 Provider min: 50
 Provider max: 500
