@@ -84,14 +84,14 @@ namespace ConcDecoder
             Provider provider = new Provider(tasks, challenges);
             Worker worker = new Worker(tasks);
 
-            //Thread thread = new Thread(provider.SendTasks);
-            //thread.Start();
-            provider.SendTasks();
+            Thread thread = new Thread(provider.SendTasks);
+            thread.Start();
+            //provider.SendTasks();
 
             Thread thread1 = new Thread(worker.ExecuteTasks);
             thread1.Start();
 
-            //thread.Join();
+            thread.Join();
             thread1.Join();       
             //todo: implement this method such that satisfies a thread safe shared buffer.
 
