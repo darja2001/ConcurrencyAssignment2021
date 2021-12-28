@@ -1,13 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "12mhwul7u+O+AuKvB0VpcX1dt2S5lnZkCmZx5lezzYW1qHg2rs5DT6hm9SdXXNGSRSxnGcahjOc0qpOVWLJyzw==",
+  "dgSpecHash": "yP/AQQVU35+YqmgUE4ByyWnWOsxZnMb5PRV0DZSCoLho9/KB5FEeLB4cSVzzdRSXNI1sJZex6cNGMldj2y85nA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nikol\\Desktop\\COC\\ConcurrencyAssignment2021\\Decoder\\Decoder.csproj",
+  "projectFilePath": "C:\\Users\\dvide\\OneDrive\\Documenten\\GitHub\\ConcurrencyAssignment2021\\Decoder\\Decoder.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\nikol\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\nikol\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\nikol\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\nikol\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.12\\microsoft.netcore.app.host.win-x64.5.0.12.nupkg.sha512"
+    "C:\\Users\\dvide\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.13\\microsoft.netcore.app.host.win-x64.5.0.13.nupkg.sha512"
   ],
   "logs": []
 }

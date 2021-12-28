@@ -26,14 +26,17 @@ namespace ConcDecoder
         /// <param name="task">A task to wait in the queue for the execution</param>
         public override void AddTask(TaskDecryption task)
         {
+            lock(this) {
             Thread thread = new Thread(() => this.taskBuffer.Enqueue(task));
             thread.Start();
-
+             
+            
             this.numOfTasks++;
             this.maxBuffSize = this.taskBuffer.Count > this.maxBuffSize ? this.taskBuffer.Count  : this.maxBuffSize;
 
             this.LogVisualisation();
             this.PrintBufferSize();
+                }
             //todo: implement this method such that satisfies a thread safe shared buffer.
         }
 
@@ -61,8 +64,9 @@ namespace ConcDecoder
         /// </summary>
         public override void PrintBufferSize()
         {
-                        
+            lock(this) { 
             Console.Write("Buffer#{0} ; ", this.taskBuffer.Count);
+            }
             //todo: implement this method such that satisfies a thread safe shared buffer.
         }
     }
@@ -84,11 +88,10 @@ namespace ConcDecoder
             Provider provider = new Provider(tasks, challenges);
             Worker worker = new Worker(tasks);
 
-            Thread thread = new Thread(provider.SendTasks);
+            Thread thread = new Thread(() => provider.SendTasks());
+            Thread thread1 = new Thread(() => worker.ExecuteTasks());
             thread.Start();
             //provider.SendTasks();
-
-            Thread thread1 = new Thread(worker.ExecuteTasks);
             thread1.Start();
 
             thread.Join();
