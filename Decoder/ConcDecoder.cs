@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Threading;
-using System.Threading.Tasks;
 using Decoder;
-using Task = Decoder.Task;
 
 namespace ConcDecoder
 {
@@ -26,9 +24,9 @@ namespace ConcDecoder
         /// <param name="task">A task to wait in the queue for the execution</param>
         public override void AddTask(TaskDecryption task)
         {
-            Thread thread = new Thread(() => this.taskBuffer.Enqueue(task));
-            thread.Start();
-
+            //Thread thread = new Thread(() => this.taskBuffer.Enqueue(task));
+            //thread.Start();
+            this.taskBuffer.Enqueue(task);
             this.numOfTasks++;
             this.maxBuffSize = this.taskBuffer.Count > this.maxBuffSize ? this.taskBuffer.Count  : this.maxBuffSize;
 
@@ -60,8 +58,7 @@ namespace ConcDecoder
         /// Prints the number of elements available in the buffer.
         /// </summary>
         public override void PrintBufferSize()
-        {
-                        
+        {                       
             Console.Write("Buffer#{0} ; ", this.taskBuffer.Count);
             //todo: implement this method such that satisfies a thread safe shared buffer.
         }
@@ -84,15 +81,27 @@ namespace ConcDecoder
             Provider provider = new Provider(tasks, challenges);
             Worker worker = new Worker(tasks);
 
-            Thread thread = new Thread(provider.SendTasks);
+            Thread thread = new Thread(() => provider.SendTasks());
+            Thread thread1 = new Thread(() => worker.ExecuteTasks());
+            //Thread[] threads = new Thread[50];
+            //for(int i = 0; i < 50; i++)
+            //{
+            //    Thread t = new Thread(new ThreadStart(worker.ExecuteTasks));
+            //    t.Name = i.ToString();
+            //    threads[i] = t;
+            //}
             thread.Start();
+            thread1.Start();
+            //for(int i = 0; i < 50; i++)
+            //{
+            //    threads[i].Start();
+            //    threads[i].Join();
+            //}    
             //provider.SendTasks();
 
-            Thread thread1 = new Thread(worker.ExecuteTasks);
-            thread1.Start();
 
+            thread1.Join();
             thread.Join();
-            thread1.Join();       
             //todo: implement this method such that satisfies a thread safe shared buffer.
 
             return tasks.GetLogs();
