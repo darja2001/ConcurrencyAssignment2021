@@ -44,11 +44,11 @@ namespace Decoder
             Stopwatch seqSW = new Stopwatch();
             Stopwatch conSW = new Stopwatch();
 
-            seqSW.Start();
-            new Launch().SequentialTaskExecution();
-            seqSW.Stop();
+            //seqSW.Start();
+            //new Launch().SequentialTaskExecution();
+            //seqSW.Stop();
 
-            TimeSpan seqET = seqSW.Elapsed;
+            //TimeSpan seqET = seqSW.Elapsed;
 
             conSW.Start();
             ConcLaunch concLaunch = new ConcLaunch();
@@ -58,7 +58,7 @@ namespace Decoder
             TimeSpan conET = conSW.Elapsed;
 
             logTiming =
-                "Time Sequential = " + seqET.Minutes + " min, " + seqET.Seconds + "sec, " + seqET.Milliseconds + " msec. " + "\n" +
+                //"Time Sequential = " + seqET.Minutes + " min, " + seqET.Seconds + "sec, " + seqET.Milliseconds + " msec. " + "\n" +
                 "Time Concurrent = " + conET.Minutes + " min, " + conET.Seconds + "sec, " + conET.Milliseconds + " msec. " + "\n";
 
             logFooter =
