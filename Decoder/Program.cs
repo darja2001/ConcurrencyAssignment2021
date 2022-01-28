@@ -12,15 +12,15 @@ namespace Decoder
         public const string studentNumberTwo = "0929003"; // This must be filled. Keep it "" if you are working alone.
         public const string classNumber = "INF3A"; // This must be filled. INF2A is just an example.
 
-        public const int numOfWorkers = 40; // how many workers are needed to keep the max size of the shared buffer between 50 - 100?
+        public const int numOfWorkers = 80; // how many workers are needed to keep the max size of the shared buffer between 50 - 100?
         public const int minSendIntervalTime = 50; // min sending interval time (in msec) by the provider
-        public const int maxSendIntervalTime = 500; // max sending interval time (in msec) by the provider
+        public const int maxSendIntervalTime = 100; // max sending interval time (in msec) by the provider
     }
 
     // The values of FixedParams must not change in the final submission.
     class FixedParams
     {
-        public const int maxNumOfChallenges = 50; // max number of challenges to be solved from the input file
+        public const int maxNumOfChallenges = 500; // max number of challenges to be solved from the input file
         public const int minTaskExeTime = 1000;  // min execution time (in msec) for abstract tasks
         public const int maxTaskExeTime = 3000;  // max execution time (in msec) for abstract tasks
         public const int terminatingTaskId = -1;  // the id of the terminating task: to terminate the worker(s)

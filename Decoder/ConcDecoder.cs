@@ -26,12 +26,19 @@ namespace ConcDecoder
         {
             //Thread thread = new Thread(() => this.taskBuffer.Enqueue(task));
             //thread.Start();
-            this.taskBuffer.Enqueue(task);
-            this.numOfTasks++;
-            this.maxBuffSize = this.taskBuffer.Count > this.maxBuffSize ? this.taskBuffer.Count  : this.maxBuffSize;
 
-            this.LogVisualisation();
-            this.PrintBufferSize();
+                lock(taskBuffer)
+                {
+                    this.taskBuffer.Enqueue(task);
+                    this.numOfTasks++;
+                    this.maxBuffSize = this.taskBuffer.Count > this.maxBuffSize ? this.taskBuffer.Count  : this.maxBuffSize;
+
+                    this.LogVisualisation();
+                    this.PrintBufferSize();
+                }
+
+            
+
             //todo: implement this method such that satisfies a thread safe shared buffer.
         }
 
@@ -43,6 +50,8 @@ namespace ConcDecoder
         {
             //todo: implement this method such that satisfies a thread safe shared buffer.
             TaskDecryption t = null;
+            lock(taskBuffer)
+            {
              if (this.taskBuffer.Count > 0)
             {
                 t = this.taskBuffer.Dequeue();
@@ -52,14 +61,18 @@ namespace ConcDecoder
                     this.taskBuffer.Enqueue(t);
             }
             return t;
+            }
+
         }
 
         /// <summary>
         /// Prints the number of elements available in the buffer.
         /// </summary>
         public override void PrintBufferSize()
-        {                       
+        {                 
+
             Console.Write("Buffer#{0} ; ", this.taskBuffer.Count);
+              
             //todo: implement this method such that satisfies a thread safe shared buffer.
         }
     }
@@ -82,25 +95,22 @@ namespace ConcDecoder
             Worker worker = new Worker(tasks);
 
             Thread thread = new Thread(() => provider.SendTasks());
-            Thread thread1 = new Thread(() => worker.ExecuteTasks());
-            //Thread[] threads = new Thread[50];
-            //for(int i = 0; i < 50; i++)
-            //{
-            //    Thread t = new Thread(new ThreadStart(worker.ExecuteTasks));
-            //    t.Name = i.ToString();
-            //    threads[i] = t;
-            //}
+            //Thread thread1 = new Thread(() => worker.ExecuteTasks());
+            Thread[] threads = new Thread[numOfWorkers];
+            for(int i = 0; i < numOfWorkers; i++)
+            {
+                threads[i] = new Thread(() => worker.ExecuteTasks());
+            }
+
             thread.Start();
-            thread1.Start();
-            //for(int i = 0; i < 50; i++)
-            //{
-            //    threads[i].Start();
-            //    threads[i].Join();
-            //}    
-            //provider.SendTasks();
 
+            for (int i = 0; i < numOfWorkers; i++)
+            {
+                threads[i].Start();
+            }
 
-            thread1.Join();
+            for (int i = 0; i < numOfWorkers; i++)
+                threads[i].Join();            
             thread.Join();
             //todo: implement this method such that satisfies a thread safe shared buffer.
 
